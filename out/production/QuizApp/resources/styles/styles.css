@@ -1,0 +1,11 @@
+.text-box-error {
+    -fx-text-box-border: red;
+}
+.date-picker-error {
+    -fx-border-color: red;
+}
+
+Button {
+    -fx-text-fill: #1e90ff;
+}
+
