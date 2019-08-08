@@ -8,9 +8,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.layout.Pane;
 import main.Main;
+import model.QuizResult;
+import service.ViewAllQuizResultService;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static constants.PathConstants.*;
+import static constants.SceneConstants.HOME_TITLE;
+import static constants.SceneConstants.PRO_TITLE;
+import static main.Main.navigate;
 
 public class ViewAllQuizResultController implements Initializable {
     private final String LINE_CHART = "lineChart";
@@ -43,6 +51,8 @@ public class ViewAllQuizResultController implements Initializable {
     @FXML
     private NumberAxis ybar;
 
+    private List<QuizResult> quizResultList;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,6 +62,8 @@ public class ViewAllQuizResultController implements Initializable {
         lineChart.getData().clear();
         barChart.getData().clear();
         pieChart.getData().clear();
+        ViewAllQuizResultService viewAllQuizResultService = new ViewAllQuizResultService();
+        quizResultList =  viewAllQuizResultService.retriveValues(Main.user);
         showLineChart();
     }
 
@@ -59,37 +71,28 @@ public class ViewAllQuizResultController implements Initializable {
     public void showLineChart() {
         lineChart.getData().clear();
         XYChart.Series series = new XYChart.Series();
-        series.getData().add(new XYChart.Data("1", 7));
-        series.getData().add(new XYChart.Data("2", 4));
-        series.getData().add(new XYChart.Data("3", 7));
-        series.getData().add(new XYChart.Data("4", 9));
-        series.getData().add(new XYChart.Data("5", 10));
-        series.getData().add(new XYChart.Data("6", 6));
-        series.getData().add(new XYChart.Data("7", 3));
-        series.getData().add(new XYChart.Data("8", 1));
-        series.getData().add(new XYChart.Data("9", 4));
-        series.getData().add(new XYChart.Data("10", 5));
+
+        quizResultList.stream().forEach(quizResult ->
+                series.getData().add(new XYChart.Data<String,Double>(String.valueOf(quizResult.getQuizno()),quizResult.getScoreObtained())));
         lineChart.getData().addAll(series);
         setOpacity(LINE_CHART);
 
     }
 
+
+    @FXML
+    void home(ActionEvent event) throws Exception{
+        navigate(HOME_FXML_PATH, HOME_TITLE, null);
+    }
+
     @FXML
     public void showPieChart(ActionEvent event) {
         pieChart.getData().clear();
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Quiz 1", 8),
-                new PieChart.Data("Quiz 2", 8),
-                new PieChart.Data("Quiz 3", 6),
-                new PieChart.Data("Quiz 4", 2),
-                new PieChart.Data("Quiz 5", 2),
-                new PieChart.Data("Quiz 6", 9),
-                new PieChart.Data("Quiz 7", 10),
-                new PieChart.Data("Quiz 8", 0),
-                new PieChart.Data("Quiz 9", 1),
-                new PieChart.Data("Quiz 10", 4)
+        ObservableList<PieChart.Data> fxArray = FXCollections.observableArrayList();
 
-        );
+        ObservableList<PieChart.Data> pieChartData = fxArray;
+        quizResultList.stream().forEach(quizResult ->
+                fxArray.add(new PieChart.Data(String.valueOf(quizResult.getQuizno()),quizResult.getScoreObtained())));
 
         pieChart.setData(pieChartData);
         pieChart.setStartAngle(90);
@@ -102,17 +105,8 @@ public class ViewAllQuizResultController implements Initializable {
     public void showBarChart(ActionEvent event) {
         barChart.getData().clear();
         XYChart.Series barSeries = new XYChart.Series<>();
-        barSeries.getData().add(new XYChart.Data("Quiz 1", 8));
-        barSeries.getData().add(new XYChart.Data("Quiz 2", 4));
-        barSeries.getData().add(new XYChart.Data("Quiz 3", 2));
-        barSeries.getData().add(new XYChart.Data("Quiz 4", 9));
-        barSeries.getData().add(new XYChart.Data("Quiz 5", 7));
-        barSeries.getData().add(new XYChart.Data("Quiz 6", 5));
-        barSeries.getData().add(new XYChart.Data("Quiz 6", 1));
-        barSeries.getData().add(new XYChart.Data("Quiz 6", 2));
-        barSeries.getData().add(new XYChart.Data("Quiz 6", 4));
-        barSeries.getData().add(new XYChart.Data("Quiz 6", 10));
-
+        quizResultList.stream().forEach(quizResult ->
+                barSeries.getData().add(new XYChart.Data<String,Double>(String.valueOf(quizResult.getQuizno()),quizResult.getScoreObtained())));
         barChart.getData().addAll(barSeries);
         setOpacity(BAR_CHART);
 

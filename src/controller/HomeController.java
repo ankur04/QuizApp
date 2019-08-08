@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import main.Main;
 
 import java.io.IOException;
 
@@ -18,6 +19,8 @@ import static constants.SceneConstants.*;
 import static main.Main.navigate;
 
 public class HomeController {
+    @FXML
+    private Label username;
     @FXML
     private Button accountInfo;
     @FXML
@@ -34,6 +37,11 @@ public class HomeController {
     private Label title;
     @FXML
     private DatePicker currentDate;
+
+    public void initialize() {
+        if (Main.user != null)
+            username.setText(Main.user.getUserName());
+    }
 
     @FXML
     private void quizCategory() {

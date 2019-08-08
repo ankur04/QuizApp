@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import main.Main;
+import model.Category;
+import service.QuizCategoriesService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,24 +21,21 @@ public class QuizCategoriesController {
     @FXML
     ListView<Hyperlink> hyperlinkListView;
 
-    private List<Hyperlink> hyperlinks = new ArrayList<Hyperlink>(Arrays.asList(
-            new Hyperlink("Category 1"),
-            new Hyperlink("Category 2"),
-            new Hyperlink("Category 3"),
-            new Hyperlink("Category 4"),
-            new Hyperlink("Category 5")
-    ));
+    private List<Category> categories = new ArrayList<Category>();
+    private List<Hyperlink> hyperlinks = new ArrayList<Hyperlink>();
 
     public void initialize() {
-        displayDummyCategories();
+        categories = new QuizCategoriesService().getCategories();
+        displayCategories();
     }
 
-    private void displayDummyCategories() {
-
-        hyperlinks.stream().forEach(hyperlink -> {
+    private void displayCategories() {
+        categories.stream().forEach(category -> {
+            Hyperlink hyperlink = new Hyperlink(category.getCategoryName());
             hyperlinkListView.getItems().add(hyperlink);
             hyperlink.setOnMouseClicked(mouseEvent -> {
                 try {
+                    Main.setCategory(category);
                     Main.navigate(APPEAR_QUIZ_FXML_PATH, APPEAR_FOR_QUIZ_TITLE, CSS_PATH);
                 } catch (IOException e) {
                     e.printStackTrace();

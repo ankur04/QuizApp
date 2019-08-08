@@ -1,0 +1,6 @@
+# exclude everything in out folder
+out/*
+# exception to the rule
+!out/.gitkeep
+
+.idea/

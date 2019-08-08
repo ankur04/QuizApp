@@ -7,38 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0"
-            prefWidth="600.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
-    <Button fx:id="aboutUs" layoutX="30.0" layoutY="233.0" mnemonicParsing="false" onAction="#aboutUs" prefHeight="30.0"
-            prefWidth="161.0" style="-fx-background-color: yellow;" text="About us" textOverrun="CLIP"/>
-    <Button fx:id="logoutButton" layoutX="501.0" layoutY="61.0" mnemonicParsing="false" onAction="#logout"
-            prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: red;" text="Logout" textFill="WHITE"/>
-    <Button fx:id="category" layoutX="30.0" layoutY="188.0" mnemonicParsing="false" onAction="#quizCategory"
-            prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: blue;" text="Quiz Category"
-            textFill="WHITE"/>
-    <Label fx:id="firstName" layoutX="16.0" layoutY="68.0" text="Welcome," textFill="#1b1918">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="600.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+    <Button fx:id="aboutUs" layoutX="30.0" layoutY="233.0" mnemonicParsing="false" onAction="#aboutUs" prefHeight="30.0" prefWidth="161.0" style="-fx-background-color: yellow;" text="About us" textOverrun="CLIP" />
+    <Button fx:id="logoutButton" layoutX="501.0" layoutY="61.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
+    <Button fx:id="category" layoutX="30.0" layoutY="188.0" mnemonicParsing="false" onAction="#quizCategory" prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: blue;" text="Quiz Category" textFill="WHITE" />
+    <Label fx:id="firstName" layoutX="16.0" layoutY="68.0" text="Welcome " textFill="#1b1918">
         <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
         </font>
     </Label>
 
     <!--    <DatePicker fx:id="currentDate" layoutX="456.0" layoutY="146.0" prefHeight="30.0" prefWidth="130.0"/>-->
     <!--    <Label fx:id="date" layoutX="466.0" layoutY="113.0" prefHeight="21.0" prefWidth="117.0" text="Select current Date"/>-->
 
-    <Button fx:id="accountInfo" layoutX="30.0" layoutY="145.0" mnemonicParsing="false" onAction="#accountInfoAction"
-            prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: cyan;" text="Account Info"/>
+    <Button fx:id="accountInfo" layoutX="30.0" layoutY="145.0" mnemonicParsing="false" onAction="#accountInfoAction" prefHeight="31.0" prefWidth="161.0" style="-fx-background-color: cyan;" text="Account Info" />
 
-    <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;"
-           text="QUIZ CONTEST" textFill="WHITE">
+    <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;" text="QUIZ CONTEST" textFill="WHITE">
         <font>
-            <Font name="System Bold" size="16.0"/>
+            <Font name="System Bold" size="16.0" />
         </font>
     </Label>
-    <ImageView fitHeight="150.0" fitWidth="325.0" layoutX="249.0" layoutY="219.0" pickOnBounds="true"
-               preserveRatio="true">
+    <ImageView fitHeight="150.0" fitWidth="325.0" layoutX="249.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../resources/images/Capture.PNG"/>
+            <Image url="@../resources/images/Capture.PNG" />
         </image>
     </ImageView>
+   <Label fx:id="username" layoutX="91.0" layoutY="68.0" textFill="#1b1918">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
 </AnchorPane>

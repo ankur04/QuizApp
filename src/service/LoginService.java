@@ -1,5 +1,6 @@
 package service;
 
+import constants.Constant;
 import dao.LoginDao;
 import model.Login;
 
@@ -15,18 +16,25 @@ import java.util.concurrent.CompletableFuture;
 
 public class LoginService {
 
+    String emailid = null;
+    String username = null;
+
+
     public Boolean checkPassword(String name, String userPassword) throws Exception {
         LoginDao loginDao = new LoginDao();
 
+
         try {
             CompletableFuture<Boolean> completableFuture
-                    = CompletableFuture.supplyAsync(() -> loginDao.checkUserNameOrEmailId(name, "email_id"))
+                    = CompletableFuture.supplyAsync(() -> loginDao.checkUserNameOrEmailId(name, Constant.EMAIL_ID))
                     .thenCombine(CompletableFuture.supplyAsync(
-                            () -> loginDao.checkUserNameOrEmailId(name, "username")), (s1, s2) -> {
+                            () -> loginDao.checkUserNameOrEmailId(name, Constant.USERNAME)), (s1, s2) -> {
                         try {
-                            if (s1!= null && s1.getSalt()!= null && !s1.getSalt().isEmpty()) {
+                            if (s1 != null && s1.getSalt() != null && !s1.getSalt().isEmpty()) {
+                                emailid = s1.getEmailId();
                                 return authenticate(userPassword, Base64.getDecoder().decode(s1.getEncryptedPassword()), Base64.getDecoder().decode(s1.getSalt()));
                             } else {
+                                username = s2.getUsername();
                                 return authenticate(userPassword, Base64.getDecoder().decode(s2.getEncryptedPassword()), Base64.getDecoder().decode(s2.getSalt()));
                             }
                         } catch (Exception ex) {
@@ -34,7 +42,21 @@ public class LoginService {
                         }
                         return false;
                     });
-            return completableFuture.get();
+            if (completableFuture.get()) {
+                int updatedRows = 0;
+                if (username != null) {
+                    updatedRows = loginDao.updateLastLoginTime(username, Constant.USERNAME);
+                } else {
+                    updatedRows = loginDao.updateLastLoginTime(emailid, Constant.EMAIL_ID);
+                }
+                if (updatedRows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         } catch (Exception ex) {
             throw new Exception("User not found");
         }
@@ -50,8 +72,6 @@ public class LoginService {
         // Authentication succeeds if encrypted password that the user entered is equal to the stored hash
         return Arrays.equals(encryptedPassword, encryptedAttemptedPassword);
     }
-
-
 
 
 }

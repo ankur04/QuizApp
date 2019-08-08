@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import main.Main;
+import model.User;
 import service.LoginService;
 
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class LoginController {
             try {
                 LoginService loginService = new LoginService();
                 if (loginService.checkPassword(textFieldEmail.getText(), textFieldPassword.getText())) {
-                    navigate(HOME_FXML_PATH, HOME_TITLE, CSS_PATH);
+                    navigate(HOME_FXML_PATH, HOME_TITLE, null);
                 } else {
                     errorEmail.setText("Username or password is incorrect. Please try again");
                 }
@@ -61,7 +63,8 @@ public class LoginController {
     @FXML
     public void playAsGuest() {
         try {
-            navigate(HOME_FXML_PATH, HOME_TITLE, CSS_PATH);
+            Main.user = new User();
+            navigate(HOME_FXML_PATH, HOME_TITLE, null);
         } catch (IOException e) {
             e.printStackTrace();
         }

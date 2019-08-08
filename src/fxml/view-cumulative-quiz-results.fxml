@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewAllQuizResultController">
+<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewAllQuizResultController">
     <children>
         <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;" text="VIEW RESULTS IN" textFill="WHITE">
             <font>
@@ -38,5 +38,6 @@
                 <NumberAxis fx:id="ybar" label="Score" side="LEFT" />
             </yAxis>
         </BarChart>
+      <Button layoutX="499.0" layoutY="10.0" mnemonicParsing="false" onAction="#home" text="Home" />
     </children>
 </Pane>

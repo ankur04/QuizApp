@@ -30,15 +30,13 @@
                    promptText="max 20 characters"/>
         <TextField fx:id="textFieldEmail" layoutX="202.0" layoutY="91.0" prefHeight="25.0" prefWidth="244.0"
                    promptText="valid email id"/>
-        <Button layoutX="201.0" layoutY="302.0" mnemonicParsing="false" onAction="#register" prefWidth="149.0"
-                text="Register"/>
-        <Label layoutX="92.0" layoutY="202.0" text="Phone Number"/>
-        <TextField fx:id="textFieldPhoneNumber" layoutX="202.0" layoutY="198.0" prefHeight="25.0" prefWidth="244.0"
-                   promptText="10 digits"/>
         <PasswordField fx:id="textFieldPassword" layoutX="202.0" layoutY="125.0" prefHeight="25.0" prefWidth="244.0"
                        promptText="min 8 characters"/>
         <PasswordField fx:id="textFieldConfirmPassword" layoutX="202.0" layoutY="159.0" prefHeight="25.0"
                        prefWidth="244.0" promptText="same password"/>
+        <Label layoutX="92.0" layoutY="202.0" text="Phone Number"/>
+        <TextField fx:id="textFieldPhoneNumber" layoutX="202.0" layoutY="198.0" prefHeight="25.0" prefWidth="244.0"
+                   promptText="10 digits"/>
         <Label layoutX="202.0" layoutY="327.0" text="* marked fields are required"/>
         <RadioButton fx:id="radioButtonMale" layoutX="202.0" layoutY="235.0" mnemonicParsing="false" text="Male">
             <toggleGroup>
@@ -53,6 +51,8 @@
         <Label fx:id="labelErrorMessage" layoutX="378.0" layoutY="285.0" textFill="RED"/>
         <DatePicker fx:id="datePickerDOB" layoutX="202.0" layoutY="260.0" prefHeight="25.0" prefWidth="147.0"
                     promptText="MM/dd/yyyy"/>
+        <Button layoutX="201.0" layoutY="302.0" mnemonicParsing="false" onAction="#register" prefWidth="149.0"
+                text="Register"/>
         <Label layoutX="92.0" layoutY="264.0" text="Date of Birth"/>
         <Button layoutX="372.0" layoutY="302.0" mnemonicParsing="false" onAction="#reset" prefHeight="25.0"
                 prefWidth="67.0" text="Reset"/>

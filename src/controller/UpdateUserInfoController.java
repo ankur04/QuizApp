@@ -1,9 +1,13 @@
 package controller;
 
+import helper.DateHelper;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import main.Main;
+import model.Gender;
+import model.User;
+import service.UpdateUserInfoService;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,11 +50,27 @@ public class UpdateUserInfoController {
     Button buttonBack;
 
     public void initialize() {
-        textFieldUsername.setText("Dharmesh Patel");
-        textFieldEmail.setText("95dharmesh@gmail.com");
-        textFieldPhoneNumber.setText("6476124010");
-        radioButtonMale.setSelected(true);
-        datePickerDOB.getEditor().setText("01/28/1995");
+        if (Main.user != null) {
+            textFieldUsername.setText(Main.user.getUserName());
+            textFieldEmail.setText(Main.user.getEmailId());
+            textFieldPhoneNumber.setText(Main.user.getPhoneNumber());
+            setGender();
+            setDOB();
+        }
+    }
+
+    private void setDOB() {
+        DateFormat dateFormat = new SimpleDateFormat(DateHelper.VALID_DATE_PATTERN);
+        datePickerDOB.getEditor().setText(dateFormat.format(Main.user.getDateOfBirth()));
+    }
+
+    private void setGender() {
+        if (Main.user.getGender().equals(Gender.MALE))
+            radioButtonMale.setSelected(true);
+        else if (Main.user.getGender().equals(Gender.FEMALE))
+            radioButtonFemale.setSelected(true);
+        else
+            radioButtonDefault.setSelected(true);
     }
 
     @FXML
@@ -84,8 +104,25 @@ public class UpdateUserInfoController {
                 & validatePasswords(textFieldPassword, textFieldConfirmPassword)
                 & validatePhoneNumber(textFieldPhoneNumber)
                 & validateDOB(datePickerDOB)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.show();
+            if (new UpdateUserInfoService().update(textFieldUsername.getText(),
+                    textFieldEmail.getText(),
+                    textFieldPassword.getText(),
+                    textFieldPhoneNumber.getText(),
+                    ((RadioButton) toggleGroupGender.getSelectedToggle()).getText(),
+                    datePickerDOB.getEditor().getText()
+            )) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Updated successfully");
+                alert.setHeaderText(null);
+                alert.setContentText("Thank you " + textFieldUsername.getText() + "!\nYou information was updated successfully");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Ooops! there was an error!");
+                alert.showAndWait();
+            }
         }
     }
 

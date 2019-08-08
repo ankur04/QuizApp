@@ -5,26 +5,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.MyRankingController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyRankingController">
     <children>
-        <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;"
-               text="MY RANKING" textFill="WHITE">
+        <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;" text="MY RANKING" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Button fx:id="buttonBack" layoutX="14.0" layoutY="10.0" mnemonicParsing="false"
-                style="-fx-background-radius: 100;" text="&lt; Back "/>
-        <Button layoutX="14.0" layoutY="58.0" mnemonicParsing="false" text="No. of quiz"/>
-        <Button layoutX="103.0" layoutY="58.0" mnemonicParsing="false" onAction="#displayByAccuracy" text="Accuracy"/>
-        <Label layoutX="241.0" layoutY="62.0" text="Your Rank:"/>
-        <Label layoutX="309.0" layoutY="62.0" text="99">
+        <Button fx:id="buttonBack" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" style="-fx-background-radius: 100;" text="&lt; Back " />
+        <Button layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#displayByNoOfQuiz" text="No. of quiz" />
+        <Button layoutX="103.0" layoutY="58.0" mnemonicParsing="false" onAction="#displayByScoreObtained" text="Score Obtained" />
+        <Label layoutX="241.0" layoutY="62.0" text="Your Rank:" />
+        <Label fx:id="rankLabel" layoutX="309.0" layoutY="62.0" text="rank">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Pane fx:id="paneView" layoutX="14.0" layoutY="95.0" prefHeight="268.0" prefWidth="384.0"/>
+        <Pane fx:id="paneView" layoutX="14.0" layoutY="95.0" prefHeight="268.0" prefWidth="384.0" />
+      <Button layoutX="513.0" layoutY="9.0" mnemonicParsing="false" onAction="#home" text="Home" />
     </children>
 </Pane>

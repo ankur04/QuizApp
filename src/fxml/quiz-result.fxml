@@ -6,22 +6,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.QuizResultController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuizResultController">
     <children>
-        <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;"
-               text="QUIZ RESULT" textFill="WHITE">
+        <Label fx:id="title" alignment="CENTER" prefHeight="43.0" prefWidth="600.0" style="-fx-background-color: TEAL;" text="QUIZ RESULT" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Button fx:id="buttonBack" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#back"
-                style="-fx-background-radius: 100;" text="&lt; Back "/>
-        <PieChart fx:id="pieChartQuizResult" layoutX="67.0" layoutY="51.0" prefHeight="274.0" prefWidth="277.0"
-                  title="Answers"/>
-        <Button layoutX="103.0" layoutY="336.0" mnemonicParsing="false" onAction="#displayDummy" text="Refresh"/>
-        <Button layoutX="251.0" layoutY="336.0" mnemonicParsing="false" onAction="#viewAnswers" text="View Answers"/>
-        <Button layoutX="392.0" layoutY="336.0" mnemonicParsing="false" onAction="#viewRanking" text="View Ranking"/>
+        <PieChart fx:id="pieChartQuizResult" layoutX="67.0" layoutY="51.0" prefHeight="274.0" prefWidth="277.0" title="Answers" />
+        <Button layoutX="103.0" layoutY="336.0" mnemonicParsing="false" onAction="#displayData" text="Refresh" />
+        <Button layoutX="251.0" layoutY="336.0" mnemonicParsing="false" onAction="#viewAnswers" text="View Answers" />
+        <Button layoutX="392.0" layoutY="336.0" mnemonicParsing="false" onAction="#viewRanking" text="View Ranking" />
+      <Label layoutX="370.0" layoutY="143.0" text="Time Used :" />
+      <Label fx:id="timeUsed" layoutX="442.0" layoutY="143.0" text="time" />
     </children>
 </Pane>

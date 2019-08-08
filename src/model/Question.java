@@ -16,7 +16,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(int questionNo, String question, String option1, String option2, String option3, String option4, int markedAns, int correctAns) {
+    public Question(int questionNo, String question, String option1, String option2, String option3, String option4, int correctAns, int points, int categoryNo) {
         this.questionNo = questionNo;
         this.question = question;
         this.option1 = option1;
@@ -25,6 +25,8 @@ public class Question {
         this.option4 = option4;
         this.markedAns = markedAns;
         this.correctAns = correctAns;
+        this.points = points;
+        this.categoryNo = categoryNo;
     }
 
     public String getQuestion() {
@@ -89,5 +91,37 @@ public class Question {
 
     public void setCorrectAns(int correctAns) {
         this.correctAns = correctAns;
+    }
+
+    public double getPoints() {
+        return points;
+    }
+
+    public void setPoints(double points) {
+        this.points = points;
+    }
+
+    public int getCategoryNo() {
+        return categoryNo;
+    }
+
+    public void setCategoryNo(int categoryNo) {
+        this.categoryNo = categoryNo;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionNo=" + questionNo +
+                ", question='" + question + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", option4='" + option4 + '\'' +
+                ", markedAns=" + markedAns +
+                ", correctAns=" + correctAns +
+                ", points=" + points +
+                ", categoryNo=" + categoryNo +
+                '}';
     }
 }

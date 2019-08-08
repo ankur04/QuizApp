@@ -92,9 +92,9 @@ public class RegisterController {
                 alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Dialog");
-                alert.setHeaderText("Look, an Error Dialog");
-                alert.setContentText("Ooops, there was an error!");
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Ooops! there was an error!");
                 alert.showAndWait();
             }
         }

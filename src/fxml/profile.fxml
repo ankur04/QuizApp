@@ -15,17 +15,17 @@
         </Label>
         <Button fx:id="buttonBack" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" style="-fx-background-radius: 100;" text="&lt; Back " />
         <Circle fx:id="profilePic" fill="DODGERBLUE" layoutX="101.0" layoutY="148.0" onMouseClicked="#profilePicSelect" radius="66.0" stroke="BLACK" strokeType="INSIDE" />
-        <Label layoutX="21.0" layoutY="59.0" text="Please click on image to upload" />
+        <Label layoutX="21.0" layoutY="59.0" text="Please click below to upload image" />
         <Label layoutX="48.0" layoutY="245.0" text="User name: " />
-        <Label layoutX="202.0" layoutY="245.0" text="Label" />
+        <Label fx:id="usernameLabel" layoutX="202.0" layoutY="245.0" />
         <Label layoutX="48.0" layoutY="274.0" text="Email Address" />
-        <Label layoutX="202.0" layoutY="274.0" text="Label" />
+        <Label fx:id="emailAddressLabel" layoutX="202.0" layoutY="274.0" />
         <Label layoutX="48.0" layoutY="305.0" text="Last Logged in date" />
-        <Label layoutX="202.0" layoutY="305.0" text="Label" />
+        <Label fx:id="lastLoggedInLabel" layoutX="202.0" layoutY="305.0" />
         <Label layoutX="48.0" layoutY="336.0" text="No of Quiz taken" />
-        <Label layoutX="202.0" layoutY="336.0" text="Label" />
+        <Label fx:id="noOfQuizTakenLabel" layoutX="202.0" layoutY="336.0" />
         <Label layoutX="48.0" layoutY="369.0" text="Average Score Obtained" />
-        <Label layoutX="202.0" layoutY="369.0" text="Label" />
+        <Label fx:id="averageScoreLabel" layoutX="202.0" layoutY="369.0" />
         <Button fx:id="buttonupdate" layoutX="359.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateUserInformation" text="Update User Information" />
         <Button fx:id="buttonCumulativeScore" layoutX="361.0" layoutY="155.0" mnemonicParsing="false" onAction="#viewCumulativeScore" prefHeight="25.0" prefWidth="147.0" text="View Cumulative Score" />
         <Button fx:id="buttonProVersion" layoutX="361.0" layoutY="270.0" mnemonicParsing="false" onAction="#proVersionAction" prefHeight="25.0" prefWidth="147.0" text="Upgrade To Pro Version" />

@@ -6,17 +6,31 @@ public class QuizResult {
     private double percentageScores;
     private double timeUsed;
     private String userName;
+    private int categoryNo;
+    private int noOfQuiz;
+    private int totalScore;
 
     public QuizResult() {
 
     }
 
-    public QuizResult(int quizno, double scoreObtained, double percentageScores, double timeUsed, String userName) {
+    public QuizResult(int quizno, double scoreObtained, double percentageScores, double timeUsed, String userName, int categoryNo) {
         this.quizno = quizno;
         this.scoreObtained = scoreObtained;
         this.percentageScores = percentageScores;
         this.timeUsed = timeUsed;
         this.userName = userName;
+        this.categoryNo = categoryNo;
+    }
+
+    public QuizResult(String userName, int noOfQuiz) {
+        this.userName = userName;
+        this.noOfQuiz = noOfQuiz;
+    }
+
+    public QuizResult(int totalScore, String userName) {
+        this.userName = userName;
+        this.totalScore = totalScore;
     }
 
     public int getQuizno() {
@@ -57,5 +71,29 @@ public class QuizResult {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getCategoryNo() {
+        return categoryNo;
+    }
+
+    public void setCategoryNo(int categoryNo) {
+        this.categoryNo = categoryNo;
+    }
+
+    public int getNoOfQuiz() {
+        return noOfQuiz;
+    }
+
+    public void setNoOfQuiz(int noOfQuiz) {
+        this.noOfQuiz = noOfQuiz;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 }

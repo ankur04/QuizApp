@@ -29,13 +29,21 @@ public class Category {
         this.categoryDetails = categoryDetails;
     }
 
-    public Category(int categoryNo, String categoryName, String categoryDetails) {
+    public Category(int categoryNo, String categoryName) {
         this.categoryNo = categoryNo;
         this.categoryName = categoryName;
-        this.categoryDetails = categoryDetails;
     }
 
     public Category() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryNo=" + categoryNo +
+                ", categoryName='" + categoryName + '\'' +
+                ", categoryDetails='" + categoryDetails + '\'' +
+                '}';
     }
 }

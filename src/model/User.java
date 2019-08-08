@@ -1,6 +1,9 @@
 package model;
 
+import helper.RandomNameGenerator;
+
 import java.io.File;
+import java.sql.Blob;
 import java.util.Date;
 
 public class User {
@@ -12,11 +15,13 @@ public class User {
     private Date dateOfBirth;
     private Date lastLoggedIn;
     private String imageUrl;
-    private File image;
+    private Blob image;
     private Character proVersion;
+    private String salt;
 
     public User() {
-
+        // TODO : verify if guest id is never used before or generate new id from DB
+        this.userName = RandomNameGenerator.getRandomNumberString();
     }
 
     public User(String userName, String emailId, String password, String phoneNumber, Gender gender, Date dateOfBirth) {
@@ -28,7 +33,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User(String userName, String emailId, String password, String phoneNumber, Gender gender, Date dateOfBirth, Date lastLoggedIn, String imageUrl, File image, Character proVersion) {
+    public User(String userName, String emailId, String password, String phoneNumber, Gender gender, Date dateOfBirth, Date lastLoggedIn, String imageUrl, Blob image, Character proVersion) {
         this.userName = userName;
         this.emailId = emailId;
         this.password = password;
@@ -105,11 +110,11 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
-    public File getImage() {
+    public Blob getImage() {
         return image;
     }
 
-    public void setImage(File image) {
+    public void setImage(Blob image) {
         this.image = image;
     }
 
@@ -119,5 +124,21 @@ public class User {
 
     public void setProVersion(Character proVersion) {
         this.proVersion = proVersion;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", emailId='" + emailId + '\'' +
+                '}';
     }
 }

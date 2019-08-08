@@ -1,5 +1,6 @@
 package controller;
 
+import dao.AppearForQuizDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -30,10 +31,8 @@ public class ViewEachQuestionAnsController {
     private static int currentIndex = 1;
 
     public ViewEachQuestionAnsController() {
-        questionList.add(new Question(1, "Toronto won 1st NBA Championship in which year",
-                "1994", "2012", "2020", "2019", 4, 4));
-        questionList.add(new Question(2, "Which is the Highest Rated TV Show in IMDB?",
-                "Game of thrones", "Chernobyl", "Breaking Bad", "House M.D.", 3, 2));
+        AppearForQuizDao appearForQuizDao = new AppearForQuizDao();
+        questionList = Main.getQuestionsList();
 
     }
 
@@ -78,7 +77,6 @@ public class ViewEachQuestionAnsController {
     @FXML
     public void previous() {
         resetParameters();
-        System.out.println(currentIndex);
         sliderQuestion.setValue(currentIndex - 1);
         if (currentIndex >= 2 && currentIndex <= 10) {
             displayQuestion(currentIndex - 1);
@@ -90,9 +88,12 @@ public class ViewEachQuestionAnsController {
     }
 
     @FXML
-    public void next() {
+    public void next() throws Exception{
         resetParameters();
         sliderQuestion.setValue(currentIndex + 1);
+        if (currentIndex == 10) {
+            Main.navigate(CUMULATIVE_FXML_PATH, CUMULATIVE_QUIZ_RESULTS_TITLE, CSS_PATH);
+        }
         if (currentIndex >= 1 && currentIndex < 10) {
             displayQuestion(currentIndex + 1);
         } else if (currentIndex < 1) {
